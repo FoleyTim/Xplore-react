@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState }from 'react';
 import './App.css';
 import ReactMapGL, { Source, Layer } from "react-map-gl"
 import Navbar from './components/Navbar/Navbar'
@@ -6,6 +6,8 @@ import Login from './components/Login/Login'
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 import { heatmapLayer } from './map-style';
 import data from './timelineData'
+import Upload from './components/Upload/Upload';
+const config = require('./config/config.json');
 
 export default function App() {
   const [viewport, setViewport] = useState({
@@ -19,13 +21,27 @@ export default function App() {
     loggedIn: false,
     mapLoaded: false,
   })
+  const [showUpload, setShowUpload] = useState(false)
+
 
   const logInUser = () => {
     setLogin({ loggedIn: true })
   }
+
+  const logOutUser = () => {
+    setLogin({ loggedIn: false })
+  }
+
   const signUp = () => {
       //sign up function
   }
+
+  const getUpload = () => {
+    if(showUpload){
+      return <Upload className="upload-modal"/>
+    }
+}
+
   const loaded = () => {
     setLogin({
       loggedIn: true,
@@ -46,9 +62,10 @@ export default function App() {
       onViewportChange={viewport => {
         setViewport(viewport);
       }}
-      mapStyle="mapbox://styles/teefoles/ckfjr0ztx3fxw19nuqm5dnly9"
-      mapboxApiAccessToken={'pk.eyJ1IjoidGVlZm9sZXMiLCJhIjoiY2tmanA3eXcwMTc5bjJxczJoZDYwbjV4bSJ9.3x9lX93u1ghk_gIDIJpGiQ'}>
-      <Navbar />
+      mapStyle={config.mapStyle}
+      mapboxApiAccessToken={config.mapBoxApiKey}>
+      <Navbar logOut={logOutUser} showUpload={setShowUpload}/>
+      {getUpload()}
       {getLoadingSpinner()}
       <Source type="geojson" data={data}>
         <Layer {...heatmapLayer} />

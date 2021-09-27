@@ -11,6 +11,9 @@
   border:0;
   z-index: 1;
   position:relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 p {
     padding:4px;
@@ -19,4 +22,21 @@ p {
   margin: 0;
   font-family: 'Rajdhani', sans-serif;
   letter-spacing: 10px;
+}
+
+.log-out{
+  font-size: 15px;
+  position : absolute;
+  right : 0;
+  padding-right:30px;
+  letter-spacing: 5px;
+}
+
+.upload{
+  font-size: 15px;
+  position : absolute;
+  left : 0;
+  padding-left:30px;
+  letter-spacing: 5px;
+
 }

@@ -7,9 +7,11 @@ export default function Login(props) {
         <div className='login-box'>
             <p>XPLORE</p>
             <input placeholder="username" type='text' className="login-input"></input>
-            <input placeholder="password" type ='password'className="login-input"></input>
-            <button onClick={props.logIn} className="login-button">Login</button>
-            <button onClick={props.signUp} className="sign-up-button">Sign up</button>
+            <input placeholder="password" type='password' className="login-input"></input>
+            <div className="buttons">
+                <button onClick={props.logIn} className="login-button">Login</button>
+                <button onClick={props.signUp} className="sign-up-button">Sign up</button>
+            </div>
         </div>
     </div>
 }

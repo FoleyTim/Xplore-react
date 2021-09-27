@@ -33,12 +33,13 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-.login-button {
+.login-button{
   width: 80%;
   font-size: 1.2em;
   background: transparent;
   color: rgba(255, 255, 255, 0.6);
   border: none;
+  padding:30px;
 }
 
 .login-button:focus {
@@ -55,6 +56,15 @@
   background: transparent;
   color: rgba(255, 255, 255, 0.6);
   border: none;
+}
+
+
+.sign-up-button:focus {
+  outline: 0;
+}
+
+.sign-up-button:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 @keyframes gradient {
